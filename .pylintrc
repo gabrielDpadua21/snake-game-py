@@ -8,6 +8,7 @@ disable=
       C0321, # Multiple statements
       W0221, # Arguments-differ
       R0801, # Duplicate Code
+      C0115, # Missing class docstring
 
 # Analyse import fallback blocks. This can be used to support both Python 2 and
 # 3 compatible code, which means that the block might have code that exists
