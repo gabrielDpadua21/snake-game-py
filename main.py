@@ -14,17 +14,18 @@ if __name__ == '__main__':
     GAME_START = True
 
 
-    for index in enumerate(len(initial_position)):
-        snake_body.append(Turtle("square"))
-        snake_body[index].penup()
-        snake_body[index].color("white")
-        snake_body[index].goto(initial_position[index])
+    for positions in initial_position:
+        body = Turtle("square")
+        body.penup()
+        body.color("white")
+        body.goto(positions)
+        snake_body.append(body)
 
 
     while GAME_START:
         screen.update()
         sleep(0.1)
-        for body in enumerate((len(snake_body) -1), 0, -1):
+        for body in range((len(snake_body) -1), 0, -1):
             new_x = snake_body[body - 1].xcor()
             new_y = snake_body[body - 1].ycor()
             snake_body[body].goto(new_x, new_y)
