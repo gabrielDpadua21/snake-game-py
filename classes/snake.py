@@ -1,7 +1,5 @@
 from turtle import Turtle
-from random import randint
 MOVE_DISTANCE = 20
-TURN_VALUE = 90
 INITIAL_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
 
 class Snake:
@@ -10,6 +8,7 @@ class Snake:
 
     def __init__(self):
         self.set_snake_body()
+        self.head = self.snake_body[0]
 
 
     def set_snake_body(self) -> None:
@@ -26,8 +25,20 @@ class Snake:
             new_x = self.snake_body[body - 1].xcor()
             new_y = self.snake_body[body - 1].ycor()
             self.snake_body[body].goto(new_x, new_y)
-        turn = randint(0, 1)
-        if turn == 0:
-            self.snake_body[0].left(TURN_VALUE)
-        else:
-            self.snake_body[0].forward(MOVE_DISTANCE)
+        self.snake_body[0].forward(MOVE_DISTANCE)
+
+
+    def move_up(self) -> None:
+        self.head.setheading(90)
+
+
+    def move_down(self) -> None:
+        self.head.setheading(270)
+
+
+    def move_left(self) -> None:
+        self.head.setheading(180)
+
+
+    def move_right(self) -> None:
+        self.head.setheading(0)

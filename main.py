@@ -9,8 +9,14 @@ if __name__ == '__main__':
     screen.bgcolor("black")
     screen.title("Snake Game")
     screen.tracer(0)
+    screen.listen()
     GAME_START = True
     snake = Snake()
+
+    screen.onkey(snake.move_up, "Up")
+    screen.onkey(snake.move_down, "Down")
+    screen.onkey(snake.move_left, "Left")
+    screen.onkey(snake.move_right, "Right")
 
 
     while GAME_START:
