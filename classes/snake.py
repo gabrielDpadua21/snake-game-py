@@ -19,7 +19,7 @@ class Snake:
         for positions in INITIAL_POSITIONS:
             body = Turtle("square")
             body.penup()
-            body.color("white")
+            body.color("green")
             body.goto(positions)
             self.snake_body.append(body)
 
