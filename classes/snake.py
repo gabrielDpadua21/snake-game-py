@@ -33,16 +33,20 @@ class Snake:
 
 
     def move_up(self) -> None:
-        self.head.setheading(UP)
+        if self.head.heading() != DOWN:
+            self.head.setheading(UP)
 
 
     def move_down(self) -> None:
-        self.head.setheading(DOWN)
+        if self.head.heading() != UP:
+            self.head.setheading(DOWN)
 
 
     def move_left(self) -> None:
-        self.head.setheading(LEFT)
+        if self.head.heading() != RIGHT:
+            self.head.setheading(LEFT)
 
 
     def move_right(self) -> None:
-        self.head.setheading(RIGHT)
+        if self.head.heading() != LEFT:
+            self.head.setheading(RIGHT)
