@@ -1,4 +1,6 @@
 from turtle import Turtle, Screen
+from time import sleep
+from random import randint
 
 
 if __name__ == '__main__':
@@ -8,11 +10,28 @@ if __name__ == '__main__':
     screen.setup(width=600, height=600)
     screen.bgcolor("black")
     screen.title("Snake Game")
-    
-    for index in range(len(initial_position)):
+    screen.tracer(0)
+    GAME_START = True
+
+
+    for index in enumerate(len(initial_position)):
         snake_body.append(Turtle("square"))
+        snake_body[index].penup()
         snake_body[index].color("white")
         snake_body[index].goto(initial_position[index])
 
-    
+
+    while GAME_START:
+        screen.update()
+        sleep(0.1)
+        for body in enumerate((len(snake_body) -1), 0, -1):
+            new_x = snake_body[body - 1].xcor()
+            new_y = snake_body[body - 1].ycor()
+            snake_body[body].goto(new_x, new_y)
+        turn = randint(0, 1)
+        if turn == 0:
+            snake_body[0].left(90)
+        else:
+            snake_body[0].forward(20)
+
     screen.exitonclick()
