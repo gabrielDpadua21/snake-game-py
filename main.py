@@ -9,6 +9,12 @@ ALIGINMENT = "center"
 FONT = ("Courier", 32, "normal")
 
 
+def validate_tail_collision(snake):
+    if snake.head in snake.snake_body[1:]:
+        return True
+    return False
+
+
 def validate_wall_colision(snake):
     if snake.head.xcor() > 280:
         return True
@@ -53,7 +59,8 @@ if __name__ == '__main__':
             SPEED = SPEED + 0.1
             sleep(SPEED)
             score.increment()
-        if validate_wall_colision(snake):
+            snake.add_snake_body()
+        if validate_wall_colision(snake) or validate_tail_collision(snake):
             GAME_START = False
             score.game_over()
 

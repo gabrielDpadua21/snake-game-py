@@ -24,6 +24,13 @@ class Snake:
             self.snake_body.append(body)
 
 
+    def add_snake_body(self) -> None:
+        body = Turtle("square")
+        body.penup()
+        body.color("green")
+        body.goto(self.snake_body[-1].position())
+        self.snake_body.append(body)
+
     def move(self) -> None:
         for body in range((len(self.snake_body) -1), 0, -1):
             new_x = self.snake_body[body - 1].xcor()
