@@ -1,4 +1,4 @@
-from turtle import Screen, Turtle
+from turtle import Screen
 from time import sleep
 from classes.snake import Snake
 from classes.food import Food
@@ -7,15 +7,6 @@ from classes.score import Score
 GAME_OVER_MESSAGE = "FUCK YOU, LOSER"
 ALIGINMENT = "center"
 FONT = ("Courier", 32, "normal")
-
-
-def game_over():
-    game_over = Turtle()
-    game_over.hideturtle()
-    game_over.color("red")
-    game_over.penup()
-    game_over.goto(0, 0)
-    game_over.write(GAME_OVER_MESSAGE, align=ALIGINMENT, font=FONT)
 
 
 def validate_wall_colision(snake):
@@ -64,7 +55,7 @@ if __name__ == '__main__':
             score.increment()
         if validate_wall_colision(snake):
             GAME_START = False
-            game_over()
+            score.game_over()
 
 
     screen.exitonclick()
