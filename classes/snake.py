@@ -10,7 +10,7 @@ class Snake:
 
     snake_body = []
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.set_snake_body()
         self.head = self.snake_body[0]
 

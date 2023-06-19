@@ -1,7 +1,37 @@
-from turtle import Screen
+from turtle import Screen, Turtle
 from time import sleep
 from classes.snake import Snake
 from classes.food import Food
+from classes.score import Score
+
+GAME_OVER_MESSAGE = "FUCK YOU, LOSER"
+ALIGINMENT = "center"
+FONT = ("Courier", 32, "normal")
+
+
+def game_over():
+    game_over = Turtle()
+    game_over.hideturtle()
+    game_over.color("red")
+    game_over.penup()
+    game_over.goto(0, 0)
+    game_over.write(GAME_OVER_MESSAGE, align=ALIGINMENT, font=FONT)
+
+
+def validate_wall_colision(snake):
+    if snake.head.xcor() > 280:
+        return True
+
+    if snake.head.xcor() < -280:
+        return True
+
+    if snake.head.ycor() > 280:
+        return True
+
+    if snake.head.ycor() < -280:
+        return True
+
+    return False
 
 
 if __name__ == '__main__':
@@ -14,6 +44,7 @@ if __name__ == '__main__':
     GAME_START = True
     snake = Snake()
     food = Food()
+    score = Score()
 
     screen.onkey(snake.move_up, "Up")
     screen.onkey(snake.move_down, "Down")
@@ -30,5 +61,10 @@ if __name__ == '__main__':
             food.refresh()
             SPEED = SPEED + 0.1
             sleep(SPEED)
+            score.increment()
+        if validate_wall_colision(snake):
+            GAME_START = False
+            game_over()
+
 
     screen.exitonclick()
